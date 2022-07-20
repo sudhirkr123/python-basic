@@ -1,16 +1,31 @@
-f1=open('D:\sample.txt','r')
-word=input("Enter any string:")
-replace=input("Enter string you want to replace:")
-input_data = f1.read()
+userFile = r'D:\sudhir\basic python\19JUL2022\sample2.txt'
+
+f1=open(userFile,'r')
+m=f1.read()
+print(m)
 f1.close()
-for i in range(len(input_data)):
-    if input_data[i]==word:
-        print(input_data[i])       
+# take two word input
+replace=input("enter text that will replace:")
+word=input("Enter text to be replaced:")
+#convert string into list
+temp=m.split(' ')
 
-# Replace the target string
-#input_data = input_data.replace(word,replace)
+#print(temp)
+for i in range(0,len(temp)):
+    if temp[i]==replace:
+        temp[i]=word
+# print(temp)
+# convert list into string and store k variable       
+k=' '.join(temp)
 
-# Write the output to same file
-#f2 = open('D:\sample.txt', 'w')
-#f2.write(input_data)
-#f2.close()
+'''
+f2=open(r'D:\sudhir\basic python\19JUL2022\sample.txt','w')
+print(k, type(k))
+f2.write("python is programming.")
+f2.close
+'''
+
+with open(userFile,'w') as f2:
+    print(k)
+    f2.write(k)
+

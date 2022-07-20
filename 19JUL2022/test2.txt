@@ -1,0 +1,4 @@
+bread
+tea
+water
+apple
