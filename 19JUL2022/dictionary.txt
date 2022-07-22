@@ -1,4 +1,6 @@
+Thak
 java
-python
-php
-html
+is
+not
+simple
+language

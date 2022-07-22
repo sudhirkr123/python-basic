@@ -1,2 +1,1 @@
-Java is not simple language.
-Thak you.
+java is not simple language Thak you.
