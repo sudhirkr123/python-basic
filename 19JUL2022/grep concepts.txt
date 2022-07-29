@@ -1,0 +1,36 @@
+syntax:
+------------------------------>
+grep [options] pattern [files]
+
+
+Displaying the count of number of matches :
+--------------------------------------------------->
+We can find the number of lines that matches the given string/pattern 
+command-->$grep -c "unix" geekfile.txt.
+
+
+
+input
+--------------------------------------->
+unix is great os. unix is opensource. unix is free os.-->1
+learn operating system.--->0
+Unix linux which one you choose.--->0
+uNix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.-->1
+
+
+user Type-->command-->$grep -c "unix" geekfile.txt
+output-->2
+
+
+Displaying only the matched pattern :
+--------------------------------------->
+By default, grep displays the entire line which has the matched string.We can make the grep to display only the matched string by using the -o option. 
+
+user Type ---> commannd-->$ grep -o "unix" geekfile.txt
+output------->
+unix
+unix
+unix
+unix
+unix
+unix
