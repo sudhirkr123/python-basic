@@ -8,10 +8,11 @@
 def Display_last_line(number,file):
     f=open(file,"r")
     m=f.readlines()
-    print(m)
+    #print(m)
     f.close()
     length=len(m)
-    print(length)
+    #print(length)
+    # type cast
     num=int(number)
     for i in range(length-num,length,1):
         print(m[i])
@@ -22,7 +23,25 @@ def Display_last_line(number,file):
    Newline count as a single character, so if tail prints out a newline,
    it will count it as a byte.
 '''
-def def Display_last_byte():
+def Display_last_byte(byte,file_location,):
+    f=open(file_location,"r")
+    string=f.read()
+    #print(string)
+    length=len(string)
+    # take one string variable to store last byte
+    last_byte=""
+    # type cast
+    number=int(byte)
+    for i in range(length-1,length-1-number,-1):
+        last_byte=last_byte+string[i]
+    #print(last_byte)
+
+        
+    #reverse the string
+    result=""
+    for i in range(len(last_byte)-1,-1,-1):
+        result=result+last_byte[i]
+    print(result)
     
 
 
@@ -53,7 +72,7 @@ if m1[0]=='tail':
         file=os.path.isfile(m1[3])
         if file==True:
             # call the function
-             print('call the -c function')
+            Display_last_byte(m1[2],m1[3])
         else:
             print('file is not found')
     
@@ -61,4 +80,3 @@ if m1[0]=='tail':
         print('invalid option')
 else:
     print('invalid command')
-

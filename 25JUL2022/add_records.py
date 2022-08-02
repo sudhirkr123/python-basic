@@ -1,0 +1,11 @@
+name=input("Enter your Name:")
+mobile_no=input("Enter your Mobile no:")
+age=input("Enter your Age:")
+email_id=input("Enter your Email Id:")
+
+file=open("phone_record.csv","w")
+file.write(name)
+file.write(mobile_no)
+file.write(age)
+file.write(email_id)
+file.close()

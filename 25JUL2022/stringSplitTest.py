@@ -25,23 +25,40 @@ def Display_last_line(file,number):
 file="textFile1.txt"
 number=5
 Display_last_line("textFile1.txt",2)
-
-
-def Display_last_byte(file,num):
-    f=open(file,"r")
-    m=f.readlines()
-    print(m)
-    length=len(m)
-    for i in range(length,length-num,1):
-        print(m[i])
-Display_last_byte("file.txt",5)
 '''
 
+def Display_last_byte(file_location,byte):
+    f=open(file_location,"r")
+    string=f.read()
+    #print(string)
+    length=len(string)
+    last_byte=""
+    for i in range(length-byte,length+1,1):
+        last_byte=last_byte+string[i]
 
+        
+    #print(last_byte)
+    #reverse the string
+    #result=""
+    #for i in range(len(last_byte)-1,-1,-1):
+     #   result=result+last_byte[i]
+    #print(result)
+                   
+
+
+
+
+Display_last_byte("file.txt",5)
+
+
+'''
 string="java is good programming language"
 num=10
+s=""
 length=len(string)
 print(length)
 for i in range(length-1,length-1-num,-1):
-    print(string[i])
-    
+    s=s+string[i]
+print(s)
+'''
+
