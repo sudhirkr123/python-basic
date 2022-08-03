@@ -1,66 +1,50 @@
 file=open("phone_records.csv","r")
-dict1=file.readlines()
-print(dict1)
-#search=input("Enter name you want to search:")
+read_file1=file.readlines()
+#print(read_file1)
 file.close()
-length=len(dict1)
-print(length)
+
+# Remove last line \n
+for indx,line in enumerate(read_file1):    
+    line =line.replace('\n', '')
+    read_file1[indx] =line
+#print('paragraph: ',read_file1)
+length=len(read_file1)
+
+# convert read_file list into list of list each items
 list1=[]
 for i in range(0,length):
-    print(dict1[i])
-    for j in range(0,i):
-        list1.append(dict1[j].split(","))
+    list1.append(read_file1[i].split(","))
 print(list1)
 
+
+# input you want to search.
 search_name=input("Enter your name you want to search:")
-length=len(list1)
-for i in list1:
-    for j in i:
-        if search_name==j:
-            print(j)
-        else:
-            print('Not found')
+#find the length how many list
+length1=len(list1)
+#print(length1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# code for searching items
+for i in range(length1): 
+    if search_name==list1[i][0]:
+        print(list1[i])
+        break
+else:
+    print('Not Found')
 
 
 '''
-# importing the csv library
-import csv
+# take one variable to store search items
+result=[]
+for i in range(length1):
+    if search_name==list1[i][0]:
+        #print(list1[i])
+        result.append(list1[i])
+    #print(result)
+length_result=len(result)
 
-# opening the csv file
-with open('phone_record.csv') as csv_file:
-    # reading the csv file using DictReader
-    csv_reader = csv.DictReader(csv_file)
-    # converting the file to dictionary
-    # by first converting to list
-    # and then converting the list to dict
-    dict_from_csv = dict(list(csv_reader)[0])
-
-    # making a list from the keys of the dict
-    list_of_column_names = list(dict_from_csv.keys())
-
-    # displaying the list of column names
-    print("List of column names : ",list_of_column_names)
-
+if length_result>0:
+    for i in result:
+        print(i)
+else:
+    print('Not Found')
 '''
