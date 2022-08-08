@@ -17,6 +17,7 @@ def search_a_member():
     for i in range(0,length):
         list1.append(read_file1[i].split(","))
     print(list1)
+    print()
 
 
     # input you want to search.
