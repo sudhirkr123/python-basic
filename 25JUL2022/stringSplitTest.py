@@ -3,7 +3,35 @@ read_file=file.readlines()
 #read_file1=file.readlines()
 #print(read_file)
 file.close()
+list1=[]
+for i in read_file:
+    if '//' not in i:
+        print(i)
 
+
+'''
+
+for indx,line in enumerate(read_file):
+    for indx1,line1 in enumerate(line):
+        if '//' not in i:
+            print(line1)
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+'''
 # find out opening braces
 opening_count=0
 opening_line=[]
@@ -44,7 +72,7 @@ else:
         
 
 
-
+'''
 
 
 
