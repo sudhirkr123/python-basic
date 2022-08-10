@@ -5,17 +5,44 @@ read_file=file.readlines()
 file.close()
 list1=[]
 for i in read_file:
-    if '//' not in i:
-        print(i)
+    for j in i:    
+        if '//' in j:  
+            j.append('\n')
+            break
+        else:
+            list1.append(i)
+print(list1)
+
+'''
+# After spliting read_file
+# cheak '//' in list line
+
+list1=[]
+for indx,line in enumerate(spliting_list):
+    for indx,line1 in enumerate(line):        
+        #print(line1)
+        if '//' in line1: # line1 == '//':
+            line1.split('//')
+            list1.append('\n')
+            break
+        else:
+            list1.append(line1)
+
+
+fresh_list=' '.join(list1)
+print(fresh_list)
+
+'''
 
 
 '''
 
 for indx,line in enumerate(read_file):
     for indx1,line1 in enumerate(line):
-        if '//' not in i:
-            print(line1)
-
+       if line1=='//':
+           print(indx1)
+       break
+    print(line)
 '''
 
 

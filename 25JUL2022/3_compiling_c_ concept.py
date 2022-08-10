@@ -5,6 +5,7 @@ read_file=file.readlines()
 #print(read_file)
 file.close()
 
+print(read_file)
 # find out opening braces
 opening_count=0
 opening_line=[]
