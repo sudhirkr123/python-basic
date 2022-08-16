@@ -1,13 +1,11 @@
 #include <stdio.h>
 int main()
 {{//{ it is comments
-    int n, i; 
-
+    int n, i;
 {
 
     //unsigned long long fact = 1;
-/*
-    {
+   /*{
     printf("Enter an integer: ");
     scanf("%d", &n); */
 
@@ -24,7 +22,8 @@ int main()
      printf("Factorial of %d = %llu", n, fact);
  }   
     return 0;
+
  /* Commenting { */
-} 
 }
+
 

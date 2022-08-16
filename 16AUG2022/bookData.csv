@@ -1,0 +1,8 @@
+Name,Book ID,Author,Category,Status
+java,103,kathy sierra,computer science,available
+java,103,Herbert Schildt,computer science,not available
+pyhon cookbook,101,David Beazely,computer science,DAMAGED
+python,101,zed A.shaw,computer science,DUE "25-08-22"
+c,105,bala jee,computer science,not available
+operating system,109,willing stallings,computer science,DUE "27-08-22"
+big data,106,john staling,computer science,available
