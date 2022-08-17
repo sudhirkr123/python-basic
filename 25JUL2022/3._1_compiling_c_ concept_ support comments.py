@@ -53,8 +53,9 @@ for indx,word in enumerate(list1):
 
 
 fresh_list=' '.join(multiline_remove_list)
+print(fresh_list)
 number_of_lines=fresh_list.splitlines()
-
+print(number_of_lines)
           
 
 

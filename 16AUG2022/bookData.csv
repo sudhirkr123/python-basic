@@ -1,8 +1,13 @@
 Name,Book ID,Author,Category,Status
-java,103,kathy sierra,computer science,available
-java,103,Herbert Schildt,computer science,not available
-pyhon cookbook,101,David Beazely,computer science,DAMAGED
-python,101,zed A.shaw,computer science,DUE "25-08-22"
-c,105,bala jee,computer science,not available
-operating system,109,willing stallings,computer science,DUE "27-08-22"
-big data,106,john staling,computer science,available
+java,1103,kathy sierra,computer science,available
+java basics,1105,Herbert Schildt,computer science,not available
+python,1201,David Beazely,computer science,DAMAGED
+python,1202,zed A.shaw,computer science,DUE "25-08-22"
+c,1005,bala jee,computer science,not available
+operating system,1309,willing stallings,computer science,DUE "27-08-22"
+big data,1506,john stallings,computer science,available
+computer network,1605,morris johnshon,networing,available
+java hero to zero,1203,albot johnson,programming,DUE "26-09-22"
+operating system,1205,kavin petrsion,computer science,not available
+computer network,1206,tim devid,networking,available
+operating system,1705,willing,hardware,available
