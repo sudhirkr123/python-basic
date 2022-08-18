@@ -1,5 +1,19 @@
-from csvHandler import readlines_database,append_database
+from csvHandler import readlines_database,append_database,write_database
 
+
+
+# display all data 
+def display_data():
+    data_list= readlines_database()
+    for i in data_list:
+        print(i)
+
+
+#display_data()
+#-------------------------------- completed displaying--------------------------------------------------
+
+
+        
 
 # checking book id
 def check_id(book_id):
@@ -17,6 +31,7 @@ def check_id(book_id):
     else:
        return False
     
+#----------------completed checking book_id------------------------------------------------------
 
 
 # adding book function
@@ -39,9 +54,10 @@ def adding_book():
         # add the data in main database
         append_database(book_add_list)
         print("add successfuly")
-        
 
 #adding_book()
+       
+#--------------------------completed adding---------------------------------
 
 
 
@@ -49,6 +65,11 @@ def adding_book():
 # searching book
 def searching_book():
     data_list= readlines_database()
+
+    for indx,line in enumerate(data_list):    
+        line =line.replace('\n', '')
+        data_list[indx] =line
+
     # code for searching book
     book_list_split=[]
     for i in range(1,len(data_list)):
@@ -65,85 +86,126 @@ def searching_book():
             search_store.append(book_list_split[i])
     #print(search_store)
     if len(search_store)>0:
-        for i in search_store:
-            print(i)
+        print('sno ,Name , Book ID, Author, Category, Status')
+        print('--------------------------------------------------------')
+        for indx,line in enumerate(search_store):
+            print(indx+1,'.',' , '.join(line))        
     else:
+        print('not found')
+        
+#searching_book()
+
+
+
+        
+#----------------------completed searching---------------------------------
+
+#deleting_book()
+def deleting_books():
+    delete=input("Enter book you want to delete:")
+    data_list= readlines_database()
+    book_list_split=[]
+    for i in range(1,len(data_list)):
+        book_list_split.append(data_list[i].split(","))
+
+    length1=len(book_list_split)
+    #print(book_list_split)
+    search_store=[]
+    for i in range(length1): 
+        if delete.lower()in book_list_split[i][0]:
+            search_store.append(book_list_split[i])
+    #print(search_store[0][1])
+
+
+            
+    if len(search_store)==0:
         print('not found')
 
 
 
-#deleting_book()
-def deleting_books():
-    m=searching_book()
-    print(m)
+    elif len(search_store)==1:
+        # book only one available to conform yes or no
+        print('sno ,Name , Book ID, Author, Category, Status')
+        print('--------------------------------------------------------')
+        for indx,line in enumerate(search_store):
+            print(indx+1,'.',' , '.join(line))
 
-deleting_books()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''    
-    file=open('bookData.csv','r')
-    book_detail=file.readlines()
-    #print(book_detail)
-    file.close()
-
-    # deleting_book
-    length= len(book_detail)
-    print('\n',book_detail[0],'------------------------------------------------------')
-    
-    for i in range(1,length):
-        print(book_detail[i])
-    
-
-    book_name=input("Enter your book name you want to delete:")
-    for i in range(1,length):
-        if book_name==book_detail[i]:
-            print(book_name)
-
+        one_book=input("if you to delete book(y/n)")
         
+        if one_book=='y':
+            for i in range(len(book_list_split)):
+                 if search_store[0][1]==book_list_split[i][1]:
+                        book_list_split.pop(i)
+                        break
+            list1=['Name','Book_ID','Author','Category','Status\n']
+            book_list_split.insert(0,list1)
+            write_database(book_list_split)
+            print('deleted sucessfully')
+
+            
+    else:
+
+        # multiple book found to conform book id
+
+        print('sno ,Name , Book ID, Author, Category, Status')
+        print('--------------------------------------------------------')
+        for indx,line in enumerate(search_store):
+            print(indx+1,'.',' , '.join(line))
+        book_id=input("Enter your book_id to confirm delete:")
+
+        for i in range(len(book_list_split)):
+            if book_id==book_list_split[i][1]:
+                book_list_split.pop(i)
+                break
+        list1=['Name','Book_ID','Author','Category','Status\n']
+        #append_database(list1)
+        book_list_split.insert(0,list1)
+        write_database(book_list_split)
+        print('deleted sucessfully')
 
 
 
-        
+
+
+#deleting_books()
+
+#-----------------completed deleting function--------------------------
+
+
+def editing_book():
+    editing=input("Enter book name you want to modify:")
+    data_list= readlines_database()
+    book_list_split=[]
+    for i in range(1,len(data_list)):
+        book_list_split.append(data_list[i].split(","))
+
+    length1=len(book_list_split)
+    #print(book_list_split)
+    search_store=[]
+    for i in range(length1): 
+        if editing.lower()in book_list_split[i][0]:
+            search_store.append(book_list_split[i])
+    #print(search_store)
+
+    if len(search_store)==0:
+        print('not found')
+
+    elif len(search_store)==1:
+             print('only one search')
     
-
-
-
+    else:
+        print('two or more')
     
-    
-deleting_books()
+editing_book()
 
 
 
 
 
 
+
+
+'''
 
 # Create menu Libraries
 print("------------Welcome to Libraries Book------------\n")

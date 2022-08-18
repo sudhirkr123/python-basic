@@ -18,14 +18,19 @@ def append_database(book_add_list):
             file.write(',')
     file.write('\n')
     file.close()
+
     
 
-
-def write_database():
+def write_database(book_list_split):
     file=open('bookData.csv','w')
-    file.write()
+    for indx,line in enumerate(book_list_split):
+        for indx1,word in enumerate(line):
+            file.write(word)
+            if '\n' not in word:
+                file.write(",")
     file.close()
-    
+
+
 
 def read_database():
     file=open('bookData.csv','r')
