@@ -1,19 +1,35 @@
 from csvHandler import readlines_database,append_database,write_database
 
 
-
+#-------------------------------diplay function--------------------------------------------------------
 # display all data 
 def display_data():
     data_list= readlines_database()
-    for i in data_list:
-        print(i)
+    
+    for indx,line in enumerate(data_list):    
+        line =line.replace('\n', '')
+        data_list[indx] =line
+    
+
+    # code for searching book
+    book_list_split=[]
+    for i in range(1,len(data_list)):
+        book_list_split.append(data_list[i].split(","))
+
+    print('sno ,Name , Book ID, Author, Category, Status')
+    print('-------------------------------------------------------------')
+    for indx,line in enumerate(book_list_split):
+         print(indx+1,'. ',' , '.join(line))
+    
 
 
 #display_data()
-#-------------------------------- completed displaying--------------------------------------------------
+         
+#-------------------------------- completed displaying----------------------------------------------------
+         
 
 
-        
+#-----------------------------------checking book id function---------------------------------------------        
 
 # checking book id
 def check_id(book_id):
@@ -31,8 +47,12 @@ def check_id(book_id):
     else:
        return False
     
+#check_id
+    
 #----------------completed checking book_id------------------------------------------------------
 
+
+#---------------------------adding book function--------------------------------------------------
 
 # adding book function
 def adding_book():
@@ -59,7 +79,9 @@ def adding_book():
        
 #--------------------------completed adding---------------------------------
 
+        
 
+#-----------------------------searching function------------------------------
 
 
 # searching book
@@ -70,10 +92,11 @@ def searching_book():
         line =line.replace('\n', '')
         data_list[indx] =line
 
-    # code for searching book
+    # code spliting each word
     book_list_split=[]
     for i in range(1,len(data_list)):
         book_list_split.append(data_list[i].split(","))
+    
     
     # input you want to search.
     search_book=input("Enter book name you want to search:")
@@ -82,8 +105,9 @@ def searching_book():
     length1=len(book_list_split)
     search_store=[]
     for i in range(length1): 
-        if search_book.lower()in book_list_split[i][0]:
+        if search_book.lower() in book_list_split[i][0].lower():
             search_store.append(book_list_split[i])
+            
     #print(search_store)
     if len(search_store)>0:
         print('sno ,Name , Book ID, Author, Category, Status')
@@ -94,11 +118,10 @@ def searching_book():
         print('not found')
         
 #searching_book()
-
-
-
         
 #----------------------completed searching---------------------------------
+
+        
 
 #deleting_book()
 def deleting_books():
@@ -112,7 +135,7 @@ def deleting_books():
     #print(book_list_split)
     search_store=[]
     for i in range(length1): 
-        if delete.lower()in book_list_split[i][0]:
+        if delete.lower()in book_list_split[i][0].lower():
             search_store.append(book_list_split[i])
     #print(search_store[0][1])
 
@@ -120,8 +143,6 @@ def deleting_books():
             
     if len(search_store)==0:
         print('not found')
-
-
 
     elif len(search_store)==1:
         # book only one available to conform yes or no
@@ -156,12 +177,15 @@ def deleting_books():
         for i in range(len(book_list_split)):
             if book_id==book_list_split[i][1]:
                 book_list_split.pop(i)
+                list1=['Name','Book_ID','Author','Category','Status\n']
+                #append_database(list1)
+                book_list_split.insert(0,list1)
+                write_database(book_list_split)
+                print('deleted sucessfully')
                 break
-        list1=['Name','Book_ID','Author','Category','Status\n']
-        #append_database(list1)
-        book_list_split.insert(0,list1)
-        write_database(book_list_split)
-        print('deleted sucessfully')
+                
+        else:
+            print("book_id worng")
 
 
 
@@ -171,6 +195,57 @@ def deleting_books():
 
 #-----------------completed deleting function--------------------------
 
+
+
+
+#---------------------------editing  menu--------------------------------------------
+
+
+
+
+def editing_menu(book_list_split):
+    print("a)Name\nb)Book_ID\nc)Author\nd)Category\ne)Status\nf)Exit")
+    choice=True
+    while choice:
+        choice=input("\nEnter your option to modify:")
+        if choice.lower()=='a':
+        # name modification
+            name=input("Enter name:")
+            book_list_split[0]=name
+            return book_list_split
+        elif choice.lower()=='b':
+            # book_id
+            new_id=input("Enter id:")
+            book_list_split[1]=new_id
+            return book_list_split
+        elif choice.lower()=='c':
+            # Author
+            Author=input("Enter Author name:")
+            book_list_split[2]=Author
+            return book_list_split
+        elif choice.lower()=='d':
+            # Category
+            category=input("Enter category:")
+            book_list_split[3]=category
+            return book_list_split
+        elif choice.lower()=='e':
+            # status
+            status=input("Enter status:")
+            book_list_split[4]=status+'\n'
+            return book_list_split
+        elif choice.lower()=='e':
+            print('exit menu')
+            break
+        
+        else:
+            print('Invalid option')
+
+
+
+#-----------------------completed editing menu-------------------------------------
+
+
+#----------------------------editing book------------------------------------------
 
 def editing_book():
     editing=input("Enter book name you want to modify:")
@@ -183,7 +258,7 @@ def editing_book():
     #print(book_list_split)
     search_store=[]
     for i in range(length1): 
-        if editing.lower()in book_list_split[i][0]:
+        if editing.lower()in book_list_split[i][0].lower():
             search_store.append(book_list_split[i])
     #print(search_store)
 
@@ -191,56 +266,55 @@ def editing_book():
         print('not found')
 
     elif len(search_store)==1:
-             print('only one search')
+        # only one book search
+        print('sno ,Name , Book ID, Author, Category, Status')
+        print('--------------------------------------------------------')
+        for indx,line in enumerate(search_store):
+            print(indx+1,'.',' , '.join(line))
+
+        one_book=input("if do you modify book(y/n)")
+        
+        if one_book=='y':
+            for i in range(len(book_list_split)):
+                 if search_store[0][1]==book_list_split[i][1]: 
+                     data=editing_menu(book_list_split[i])
+                     book_list_split[i]=data
+                     break
+            list1=['Name','Book_ID','Author','Category','Status\n']
+            #append_database(list1)
+            book_list_split.insert(0,list1)
+            write_database(book_list_split)
+            print("Modify successfully")
+  
+        
+
     
     else:
-        print('two or more')
-    
-editing_book()
+        # multiple book same name 
+        print('sno ,Name , Book ID, Author, Category, Status')
+        print('--------------------------------------------------------')
+        for indx,line in enumerate(search_store):
+            print(indx+1,'.',' , '.join(line))
+            
+        book_id=input("Enter your book_id to confirm modification:")
 
+        for i in range(len(book_list_split)):
+            if book_id==book_list_split[i][1]:
+                data=editing_menu(book_list_split[i])
+                book_list_split[i]=data
+                
+                list1=['Name','Book_ID','Author','Category','Status\n']
+                #append_database(list1)
+                book_list_split.insert(0,list1)
+                write_database(book_list_split)
+                print("Modify successfully")
+                break
+        else:
+            print("worng book_id")
+            
+  
+#editing_book()
 
-
-
-
-
-
-
-'''
-
-# Create menu Libraries
-print("------------Welcome to Libraries Book------------\n")
-print("a)Adding\nb)searching\nc)editing\nd)deleting books\ne)Exist")
-choice=True
-while choice:
-    choice=input("\nEnter your Choice:")
-    if choice.lower()=='a':
-        # adding
-        control.adding_book()
-        
-    elif choice.lower()=='b':
-        # searching
-        print('Searching')
-
-           
-    elif choice.lower=='c':
-         # editing
-         print('editing')
-
-         
-    elif choice.lower()=='d':
-        # delete
-        print('delete')
-
-        
-    elif choice.lower()=='e':
-        print('---bye bye---')
-        break
-    
-    else:
-        print('Invalid option')
-
-
-'''
-
+#---------------------------editing completed-----------------------------------------
 
 

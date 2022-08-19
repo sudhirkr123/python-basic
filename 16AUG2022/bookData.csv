@@ -1,16 +1,12 @@
 Name,Book_ID,Author,Category,Status
-c,1005,bala jee,computer science,not available
-computer network,1605,morris johnshon,networing,available
-java hero to zero,1203,albot johnson,programming,DUE "26-09-22"
-operating system,1205,kavin petrsion,computer science,not available
-computer network,1206,tim devid,networking,available
-operating system,1705,willing,hardware,available
+computer network,1608,morris johnshon,networing,available
+computer network,1200,tim devid,networking,available
+operating system basic,1705,willing,hardware,available
 big data,1207,willison john,computer lab,available
-java,1103,kathy sierra,computer science,available
-java basics,1105,Herbert Schildt,computer science,not available
-c,1005,bala jee,computer science,not available
-computer network,1605,morris johnshon,networing,available
-java hero to zero,1203,albot johnson,programming,DUE "26-09-22"
-operating system,1205,kavin petrsion,computer science,not available
+c,1001,bala jee,computer science,available
+computer network,1605,morris johnshon,networing,not available
+operating system,1202,kavin petrsion,computer science,not available
 computer network,1206,tim devid,networking,available
-operating system,1705,willing,hardware,available
+operating system,1709,stalling kim,hardware,available
+Java Fulent,1307,bala jee,programming,DUE "12-09-22"
+big data,1108,stalling,computer science,not available
