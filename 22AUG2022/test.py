@@ -1,70 +1,25 @@
-from cvsHandler import readlines_employeeDetails
+from cvsHandler import append_employeeDetails
+from test import searching
 
-def search_by_name(search_by_name):
-    data_list= readlines_employeeDetails()
 
-    for indx,line in enumerate(data_list):    
-        line =line.replace('\n', '')
-        data_list[indx] =line
-
-    # code spliting each word
-    employeeDetails_split=[]
-    for i in range(1,len(data_list)):
-        employeeDetails_split.append(data_list[i].split(","))
-
-    length1=len(employeeDetails_split)
-    search_store=[]
-    for i in range(length1): 
-        if search_by_name.lower() in employeeDetails_split[i][1].lower():
-            search_store.append(employeeDetails_split[i])
-    if len(search_store)>0:
-        for indx,line in enumerate(search_store):
-            print(indx+1,'.',' , '.join(line))        
-    else:
-        print('not found')
+class Employee:
+    def __init__(self,employee_id,name,contact,dept,email_id):
+        self.employee_id=employee_id
+        self.name=name
+        self.contact=contact
+        self.dept=dept
+        self.email_id=email_id
         
-            
-#search_by_name('raju')
-    
-def search_by_employee_id(search_by_employee_id):
-    data_list= readlines_employeeDetails()
-
-    for indx,line in enumerate(data_list):    
-        line =line.replace('\n', '')
-        data_list[indx] =line
-
-    # code spliting each word
-    employeeDetails_split=[]
-    for i in range(1,len(data_list)):
-        employeeDetails_split.append(data_list[i].split(","))
-
-    length1=len(employeeDetails_split)
-    search_store=[]
-    for i in range(length1): 
-        if search_by_employee_id in employeeDetails_split[i][0]:
-            search_store.append(employeeDetails_split[i])
-    if len(search_store)>0:
-        for indx,line in enumerate(search_store):
-            print(indx+1,'.',' , '.join(line))        
-    else:
-        print('not found')
+employee_id=input('Enter your emplyee_id:')
+name=input('Enter name:')
+contact=input('Enter contact:')
+dept=input('Enter dept:')
+email_id=input('Enter email_id:')
 
 
-def searching():
-    print('1.search by Name\n2.Search by employee_id')
-    option=input('Enter option:')
-    if option=='1':
-        name=input('Enter name:')
-        search_by_name(name)
-    elif option=='2':
-        employee_id=input('Enter employee_id:')
-        search_by_employee_id(employee_id)
-        
-    else:
-        print('Invalid option')
-    
 
-
-searching()    
+obj1=Employee(employee_id,name,contact,dept,email_id)
+append_employeeDetails(obj1)
+searching()
 
 
