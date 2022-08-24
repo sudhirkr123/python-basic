@@ -16,3 +16,11 @@ def readlines_employeeDetails():
     file.close()
     return employee_Details
 
+def write_database(employee_list):
+    file=open('employee.csv','w')
+    for indx,line in enumerate(employee_list):
+        for indx1,word in enumerate(line):
+            file.write(word)
+            if '\n' not in word:
+                file.write(",")
+    file.close()
