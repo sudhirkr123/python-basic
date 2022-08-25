@@ -58,15 +58,19 @@ def check_employee_id(employee_id):
 
 
 def editing_menu(employee_list):
-    print("a)Employee_id\nb)Name\nc)Contact\nd)Dept\ne)Email")
-    choice=True
-    while choice:
+    print("a)Employee id\nb)Name\nc)Contact\nd)Dept\ne)Email")
+    choice=''
+    while True:
         choice=input("\nEnter your option:")
         if choice.lower()=='a':
             emp_id=input("Enter_Employee_id:")
-            employee_list[0]=emp_id
-            return employee_list
-        
+            check_id=check_employee_id(emp_id)
+            if check_id==True:
+                print('Already id is present in data base')
+            else:
+                employee_list[0]=emp_id
+                return employee_list
+            
         elif choice.lower()=='b':
             name=input("Enter Name:")
             employee_list[1]=name
@@ -74,7 +78,7 @@ def editing_menu(employee_list):
         
         elif choice.lower()=='c':
             contact=input("Enter Contact:")
-            book_list_split[2]=contact
+            employee_list[2]=contact
             return employee_list
         
         elif choice.lower()=='d':
@@ -84,7 +88,11 @@ def editing_menu(employee_list):
         elif choice.lower()=='e':
             mail=input("Enter Email:")
             employee_list[4]=mail+'\n'
-            return employee_list   
+            return employee_list
+        
+       # elif choice.lower()=='f':
+        #    return "Exit"
+        
         else:
             print('Invalid option')
 
