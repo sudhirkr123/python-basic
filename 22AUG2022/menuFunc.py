@@ -29,9 +29,6 @@ def search_by_name(search_by_name):
         if search_by_name.lower() in Data_list[i][1].lower():
             search_store.append(Data_list[i])
     return search_store
-    
-
-
         
 # search by employee_id    
 def search_by_employee_id(employee_id):
@@ -41,8 +38,6 @@ def search_by_employee_id(employee_id):
         if employee_id in Data_list[i][0]:
             search_store.append(Data_list[i])
     return search_store
-    
-   
 
   
 # check_employee_id
@@ -58,8 +53,9 @@ def check_employee_id(employee_id):
 
 
 def editing_menu(employee_list):
-    print("a)Employee id\nb)Name\nc)Contact\nd)Dept\ne)Email")
-    choice=''
+    print('Edit menu option')
+    print("a)Employee id\nb)Name\nc)Contact\nd)Dept\ne)Email\nf)Exit")
+    choice=True
     while True:
         choice=input("\nEnter your option:")
         if choice.lower()=='a':
@@ -90,11 +86,14 @@ def editing_menu(employee_list):
             employee_list[4]=mail+'\n'
             return employee_list
         
-       # elif choice.lower()=='f':
-        #    return "Exit"
+        elif choice.lower()=='f':
+            return "Exit"
         
         else:
             print('Invalid option')
 
-#editing_menu(list1)
-#print(check_employee_id())    
+
+
+#list1=['234','ranjeet singh','8002237851','rajeet@gmail.com']
+#m=editing_menu(list1)
+#print(m)    
