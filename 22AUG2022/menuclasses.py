@@ -118,6 +118,8 @@ class Employee:
             print(indx+1,'.',' , '.join(line))
 
 
+
+
     def editing(self):
         print('1.Edit by Name\n2.Edit by Employee id')
         option=input("Enter option:")
@@ -147,7 +149,7 @@ class Employee:
                                 if data=='Exit':
                                     break
                                 All_data[i]=data
-                             break
+                            break
                                 
                     #print(All_data)
                     list1=['Employee id','Name','Contact','Dept','Email id\n']

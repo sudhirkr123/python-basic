@@ -51,7 +51,6 @@ def check_employee_id(employee_id):
             return True
 
 
-
 def editing_menu(employee_list):
     print('Edit menu option')
     print("a)Employee id\nb)Name\nc)Contact\nd)Dept\ne)Email\nf)Exit")
@@ -94,6 +93,128 @@ def editing_menu(employee_list):
 
 
 
+
+def check_edit_person():
+    print('1.Edit by Name\n2.Edit by Employee id')
+    option=True
+    #option=input("Enter option:")
+    while True:
+        option=input("Enter option:")
+        if option=='1':
+            name=input('Enter name:')
+            check_name=search_by_name(name)
+            #print(check_name) 
+            if len(check_name)==0:
+                print('Record not found')
+                
+            elif len(check_name)==1:
+                for indx,line in enumerate(check_name):
+                    print(indx+1,'.',' , '.join(line))
+
+                #confirmation ask to user
+                confrm=input('Do you want to edit(y/n):')
+                if confrm.lower()=='y':
+                    All_data=list_split()
+                    for i in range(len(All_data)):
+                        if check_name[0][1] in All_data[i][1]:
+                            return All_data[i],i
+                            
+            else:    
+                for indx,line in enumerate(check_name):
+                    print(indx+1,'.',' , '.join(line))
+
+                confrm=input('Enter employee_id you want to edit:')
+                All_data=list_split()
+                for i in range(len(All_data)):
+                    if confrm in All_data[i][0]:
+                        return All_data[i],i
+                else:
+                    print('Enter worng emplyee_id')
+                    
+        elif option=='2':
+            employee_id=input('Enter employee_id:')
+            check_id=search_by_employee_id(employee_id)
+            All_data=list_split()
+            for i in range(len(All_data)):
+                if employee_id in All_data[i][0]:               
+                    return All_data[i],i   
+            else:
+                print('Worng Employee_id')
+        else:
+            print('Invalid option')
+
+                   
+                    
+
+
+
+
+
+#m=check_edit_person()
+#print(m[1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+def editing_menu(employee_list):
+    print('Edit menu option')
+    print("a)Employee id\nb)Name\nc)Contact\nd)Dept\ne)Email\nf)Exit")
+    choice=True
+    while True:
+        choice=input("\nEnter your option:")
+        if choice.lower()=='a':
+            emp_id=input("Enter_Employee_id:")
+            check_id=check_employee_id(emp_id)
+            if check_id==True:
+                print('Already id is present in data base')
+            else:
+                employee_list[0]=emp_id
+                return employee_list
+            
+        elif choice.lower()=='b':
+            name=input("Enter Name:")
+            employee_list[1]=name
+            return employee_list
+        
+        elif choice.lower()=='c':
+            contact=input("Enter Contact:")
+            employee_list[2]=contact
+            return employee_list
+        
+        elif choice.lower()=='d':
+            dept=input("Enter Dept:")
+            employee_list[3]=dept
+            return employee_list
+        elif choice.lower()=='e':
+            mail=input("Enter Email:")
+            employee_list[4]=mail+'\n'
+            return employee_list
+        
+        elif choice.lower()=='f':
+            return "Exit"
+        
+        else:
+            print('Invalid option')
+
+
+
+
+
+
+
+
+
 #list1=['234','ranjeet singh','8002237851','rajeet@gmail.com']
 #m=editing_menu(list1)
-#print(m)    
+#print(m)
+'''

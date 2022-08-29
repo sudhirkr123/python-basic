@@ -1,2 +1,3 @@
-print('hello sudhir')
-
+p=[34,56,78,67,566,56]
+p=(3,66)
+print(p)
