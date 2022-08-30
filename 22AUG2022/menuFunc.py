@@ -1,4 +1,4 @@
-from cvsHandler import readlines_employeeDetails
+from cvsHandler import readlines_employeeDetails,write_database
 
 
 # list cleaning
@@ -51,10 +51,13 @@ def check_employee_id(employee_id):
             return True
 
 
-def editing_menu(employee_list):
+def editing_menu(self):
+    employee_list=[]
+    employee_list.extend([self.employee_id,self.name,self.contact,self.dept,self.email_id])
+    
     print('Edit menu option')
     print("a)Employee id\nb)Name\nc)Contact\nd)Dept\ne)Email\nf)Exit")
-    choice=True
+    choice=''
     while True:
         choice=input("\nEnter your option:")
         if choice.lower()=='a':
@@ -117,7 +120,7 @@ def check_edit_person():
                     All_data=list_split()
                     for i in range(len(All_data)):
                         if check_name[0][1] in All_data[i][1]:
-                            return All_data[i],i
+                            return All_data[i][0],All_data[i][1],All_data[i][2],All_data[i][3],All_data[i][4],i
                             
             else:    
                 for indx,line in enumerate(check_name):
@@ -127,7 +130,7 @@ def check_edit_person():
                 All_data=list_split()
                 for i in range(len(All_data)):
                     if confrm in All_data[i][0]:
-                        return All_data[i],i
+                        return All_data[i][0],All_data[i][1],All_data[i][2],All_data[i][3],All_data[i][4],i
                 else:
                     print('Enter worng emplyee_id')
                     
@@ -137,7 +140,7 @@ def check_edit_person():
             All_data=list_split()
             for i in range(len(All_data)):
                 if employee_id in All_data[i][0]:               
-                    return All_data[i],i   
+                    return All_data[i][0],All_data[i][1],All_data[i][2],All_data[i][3],All_data[i][4],i   
             else:
                 print('Worng Employee_id')
         else:
@@ -149,9 +152,25 @@ def check_edit_person():
 
 
 
+def someFunc(obj,pos):
+    All_data=list_split()          
+    All_data[pos][0]=obj.employee_id
+    All_data[pos][1]=obj.name
+    All_data[pos][2]=obj.contact   
+    All_data[pos][3]=obj.dept
+    All_data[pos][4]=obj.email_id
+    list1=['Employee id','Name','Contact','Dept','Email id\n']
+    All_data.insert(0,list1)
+    write_database(All_data)
+    print('Edit sucessfully')
+
+
+
+
+
 
 #m=check_edit_person()
-#print(m[1])
+#print(m)
 
 
 
