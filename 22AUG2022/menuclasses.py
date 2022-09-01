@@ -1,4 +1,4 @@
-from menuFunc import search_by_name,search_by_employee_id,list_cleaning,list_split,check_edit_person,check_employee_id,someFunc
+from menuFunc import search_by_name,search_by_employee_id,list_cleaning,list_split,check_edit_person,check_employee_id,store_edit_Func
 from cvsHandler import write_database,append_employeeDetails
 
 class Employee:
@@ -106,7 +106,7 @@ class Employee:
                 print('Worng Employee_id')
             
         else:
-            print('Invalid option')
+            print('[ERROR] Invalid option.')
 
 
 
@@ -122,36 +122,36 @@ class Employee:
 
     def editing(self):
         print('Edit menu option')
-        print("a)Employee id:", self.emp_id ,"\n")
-
-        #b)Name\nc)Contact\nd)Dept\ne)Email\nf)Exit")
-        
         choice=''
         while True:
+            print("\na)Employee id:",self.employee_id)
+            print("b)Name :",self.name)
+            print("c)Contact:",self.contact)
+            print("d)Dept:",self.dept)
+            print("e)Email:",self.email_id)
+            print("f)Exit:")
             choice=input("\nEnter your option:")
             if choice.lower()=='a':
-                self.employee_id=input("Enter_Employee_id:")
+                self.employee_id=input("Enter Employee id:")
             
             elif choice.lower()=='b':
                 self.name=input("Enter Name:")
                 
             elif choice.lower()=='c':
-                self.dept=input("Enter contact:")
+                self.contact=input("Enter contact:")
             
             elif choice.lower()=='d':
                 self.dept=input("Enter Dept:")
+
                    
             elif choice.lower()=='e':
-                self.email_id=input("Enter Email:")
+                self.email_id=input("Enter Email:")+'\n'
                 
             elif choice.lower()=='f':
                 return
         
             else:
-                print('Invalid option')
-
-                    
-
+                print('[ERROR] Invalid option.')
 
 
                     
@@ -178,9 +178,12 @@ while True:
       
     elif choice== 3:
         #Editing
+        print('1.Edit by Name\n2.Edit by Employee id')
+        #option=input("Enter your option:")
         obj.employee_id, obj.name,obj.contact,obj.dept, obj.email_id, pos = check_edit_person()
         obj.editing()
-        someFunc(obj, pos)       
+        store_edit_Func(obj, pos)
+        
     elif choice== 4:
         
         obj.deleting()
@@ -195,5 +198,3 @@ while True:
     
     else:
         print('Invalid option')
-
-
