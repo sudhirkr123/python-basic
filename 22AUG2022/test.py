@@ -1,4 +1,4 @@
-from menuFunc import search_by_name,search_by_employee_id,list_cleaning,list_split,check_employee_id
+from menuFunc import search_by_name,search_by_employee_id,list_split,check_employee_id,delete_employee
 from cvsHandler import write_database,append_employeeDetails
 
 class Employee:
@@ -16,76 +16,6 @@ class Employee:
         self.contact= input('Enter contact no:')
         self.dept= input('Enter dept:')
         self.email_id= input('Enter email:')
-
-        
-
-
-    
-    def deleting(self,option):
-        if option=='1':
-            name=input('Enter name:')
-            check_name=search_by_name(name)
-            
-            if len(check_name)==0:
-                print('Record not found')
-                
-            elif len(check_name)==1:
-                for indx,line in enumerate(check_name):
-                    print(indx+1,'.',' , '.join(line))
-
-                #confirmation ask to user
-                confrm=input('Do you want to delete(y/n):')
-                if confrm.lower()=='y':
-                    All_data=list_split()
-                    #print(All_data)
-                    
-                    for i in range(len(All_data)):
-                         if check_name[0][1] in All_data[i][1]:
-                             All_data.pop(i)
-                             break
-                    #print(All_data)
-                    list1=['Employee id','Name','Contact','Dept','Email id\n']
-                    All_data.insert(0,list1)
-                    write_database(All_data)
-                    print('Delete sucessfully')
-                    
-            else:
-                 for indx,line in enumerate(check_name):
-                    print(indx+1,'.',' , '.join(line))
-
-                 confrm=input('Enter employee_id:')
-                 All_data=list_split()
-                 for i in range(len(All_data)):
-                     if confrm in All_data[i][0]:
-                          All_data.pop(i)
-                          list1=['Employee id','Name','Contact','Dept','Email id\n']
-                          All_data.insert(0,list1)
-                          write_database(All_data)
-                          print('Delete sucessfully')
-                          break
-                 else:
-                    print('worng Employee_id')               
-    
-        elif option=='2':
-            employee_id=input('Enter employee_id:')
-            check_id=search_by_employee_id(employee_id)
-            All_data=list_split()
-            for i in range(len(All_data)):
-                if employee_id in All_data[i][0]:
-                    All_data.pop(i)
-                    list1=['Employee id','Name','Contact','Dept','Email id\n']
-                    All_data.insert(0,list1)
-                    write_database(All_data)
-                    print('Delete sucessfully')
-                    break
-            else:
-                print('Worng Employee_id')
-            
-        else:
-            print('[ERROR] Invalid option.')
-
-
-        
 
 
 
@@ -112,8 +42,16 @@ while True:
         
     elif choice== 4:
         print('1.Delete by Name\n2.Delete by Employee id')
-        option=input("Enter option:")
-        obj.deleting(option)
+        pos=delete_employee()
+        All_data=list_split()
+        All_data.pop(pos)
+        list1=['Employee id','Name','Contact','Dept','Email id\n']
+        All_data.insert(0,list1)
+        write_database(All_data)
+        print('Delete sucessfully')
+
+
+        
               
     elif choice== 5:
         print('---> display')
