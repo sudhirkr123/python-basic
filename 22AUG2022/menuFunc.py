@@ -74,9 +74,8 @@ def check_edit_person():
                 if confrm.lower()=='y':
                     All_data=list_split()
                     for i in range(len(All_data)):
-                        if check_name[0][1] in All_data[i][1]:
-                            return All_data[i][0],All_data[i][1],All_data[i][2],All_data[i][3],All_data[i][4],i
-                            
+                        if check_name[0][1] in All_data[i][1]: 
+                            return All_data[i][0],All_data[i][1],All_data[i][2],All_data[i][3],All_data[i][4],i               
             else:    
                 for indx,line in enumerate(check_name):
                     print(indx+1,'.',' , '.join(line))
@@ -171,4 +170,8 @@ def delete_employee():
                 print('Worng Employee_id')
         else:
             print('Invalid option')
+
+
+
+
 
