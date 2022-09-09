@@ -1,11 +1,10 @@
-
 def append_employeeDetails(emp,name,contact,dept,email):
     file=open('employee.csv','a')
-    file.write(obj.employee_id + ',')
-    file.write(obj.name +',')
-    file.write(obj.contact +',')
-    file.write(obj.dept+',')
-    file.write(obj.email_id+'\n')
+    file.write(emp + ',')
+    file.write(name +',')
+    file.write(contact +',')
+    file.write(dept +',')
+    file.write(email+'\n')
     file.close()
 
 
