@@ -18,12 +18,7 @@ def search_employee_name(name):
     for i in range(1,len(Data_list)): 
         if name.lower() in Data_list[i][1].lower():
             search_store.append(Data_list[i])
-            return search_store
-
-#name="kumar"
-#m=search_employee_name(name)
-#print(m)
-
+    return search_store
 
 
 

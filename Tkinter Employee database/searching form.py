@@ -1,14 +1,47 @@
-from searching function import search_employee_name
+from searchingFunc import search_employee_name
 from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+
 
 win=Tk()
 win.title('Searching Employee Data')
-win.geometry("400x400")
+#win.maxsize(width=720,height=400)
+#win.minsize(width=500,height=300)
+win.geometry("1050x300")
+win.resizable(False,False)
 
-def submit():
+def search():
     name=name_info.get()
-    search_employee_name(name)
+    data=search_employee_name(name)
+
+    if name=="":
+        messagebox.showerror("Error","please enter name")
     
+        
+    elif len(data)>0:  
+        tree = ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"), show='headings', height=5) # .place(x=60,y=100)
+        tree.column("# 1", anchor=CENTER)
+        tree.heading("# 1", text="Employee ID")
+        tree.column("# 2", anchor=CENTER)
+        tree.heading("# 2", text="Name")
+        tree.column("# 3", anchor=CENTER)
+        tree.heading("# 3", text="Contact")
+        tree.column("# 4", anchor=CENTER)
+        tree.heading("# 4", text="Department")
+        tree.column("# 5", anchor=CENTER)
+        tree.heading("# 5", text="Email")
+
+        # Insert the data in Treeview widget
+        for i in range(len(data)):
+            tree.insert('', 'end', text="1", values=(data[i][0],data[i][1], data[i][2],data[i][3],data[i][4]))
+        tree.place(x=20,y=130)
+    else:
+        Label(win,
+              text="Records not found",
+              font="20",
+              fg="#f72036").place(x=40,y=130)
+
          
 Label(text="Name:",font="20").place(x=30,y=40)
 name_info=StringVar()
@@ -16,50 +49,13 @@ name=Entry(win,font="30",bd=3,textvariable=name_info)
 name.place(x=80,y=40)
 
 # sumbit button
-btn=Button(win,text="Submit",font="30",bd=3,command=submit).place(x=280,y=35)
-#btn.pack()
+btn=Button(win,text="Search",font="30",bd=3,command=search).place(x=280,y=35)
+
+#frame1 = ttk.LabelFrame(win, text="frame1", width=100, height=50, bd=5)
+
+
+Label(text="Search Data",font=("Bodoni MT Black",20)).place(x=25,y=90)
 
 
 win.mainloop()
 
-
-
-
-
-
-
-'''
-from tkinter import *
-root =Tk()
-
-def search():
-    pass
-root.title('Searching Employee Data')
-heading=Frame(root)
-frame=Frame(root)
-result=(root)
-Label(heading,
-      text="Search Employee Data",
-      pady=20,
-      font=("Times" ,30, "bold")).pack(side=TOP)
-Label(frame,text="search Here:").pack(side=LEFT)
-Label(result,
-      text="Search results:",
-      pady=1,
-      font=("Arial",17)).pack(side=LEFT)
-
-input_box=Entry(frame,width=50)
-
-input_box.focus_set()
-
-query=""
-text=Text(root,font=("Robot",13),padx=55,pady=10)
-
-button=Button(frame,text="search",command=search)
-button.pack(side=RIGHT)
-heading.pack()
-frame.pack(side=TOP)
-result.pack(side=TOP,fill=BOTH,pady=20,padx=50)
-text.pack()
-root.mainloop()
-'''
