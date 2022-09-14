@@ -21,4 +21,20 @@ def search_employee_name(name):
     return search_store
 
 
+# search by employee_id    
+def search_by_employee_id(employee_id):
+    Data_list=list_cleaning()
+    search_store=[]
+    for i in range(len(Data_list)): 
+        if employee_id in Data_list[i][0]:
+            search_store.append(Data_list[i])
+    return search_store
 
+def Edit(name,list1):
+     Data_list=list_cleaning()
+     for i in range(len(Data_list)):
+         if name in Data_list[i][1]:
+             Data_list[i]=list1
+             return Data_list
+            
+             

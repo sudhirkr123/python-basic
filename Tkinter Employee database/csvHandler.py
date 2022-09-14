@@ -23,3 +23,4 @@ def write_database(employee_list):
             if '\n' not in word:
                 file.write(",")
     file.close()
+
