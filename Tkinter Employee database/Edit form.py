@@ -61,11 +61,13 @@ def search():
     name=name_info.get()
     data=search_employee_name(name)
 
+
     if name=="":
         messagebox.showerror("Error","please enter name")
     
         
     elif len(data)>0:
+    
         Edit_form()
         tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5) # .place(x=60,y=100)
         tree.column("# 1", anchor=CENTER)
@@ -79,15 +81,26 @@ def search():
         tree.column("# 5", anchor=CENTER)
         tree.heading("# 5", text="Email")
 
-        row_id=treeview.foucus()
-        print(row_id)
+        tree.bind('<ButtonRelease-1>') 
+        treeview =tree
 
+        ttk.Style().configure("Treeview", font= ('', 8), background="#383838", 
+        foreground="white", fieldbackground="yellow")
+
+    
         # Insert the data in Treeview widget
         for i in range(len(data)):
             tree.insert('', 'end', text="1", values=(data[i][0],data[i][1], data[i][2],data[i][3],data[i][4]))
+            #print(data[i])
         tree.place(x=20,y=150)
+        y=tree.item(tree.selection())
+        item=tree.selection()
+        print(item)
+
+        
+
+        
        
-        print(tree)
     else:
         Label(win,
               text="Records not found",
