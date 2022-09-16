@@ -1,5 +1,12 @@
-from csvHandler import readlines_employeeDetails
+from csvHandler import readlines_employeeDetails,write_database
 
+
+def list_split():
+    data_list=readlines_employeeDetails()
+    employee_list=[]
+    for i in range(1,len(data_list)):
+        employee_list.append(data_list[i].split(','))
+    return employee_list
 
 def list_cleaning():
     data_list= readlines_employeeDetails()
@@ -37,4 +44,16 @@ def Edit(name,list1):
              Data_list[i]=list1
              return Data_list
             
-             
+
+
+
+def edited(emp,name,contact,dept,email):
+    value=[emp,name,contact,dept,email+'\n']
+    data_list=list_split()
+    for i in range(1,len(data_list)):
+        if emp in data_list[i][0]:
+            data_list[i]=value
+    list1=['emp id','Name','contact','dept','email\n']
+    data_list.insert(0,list1)
+    write_database(data_list)
+         

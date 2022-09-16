@@ -1,3 +1,104 @@
+
+import tkinter as tk
+from tkinter import ttk
+win = tk.Tk()
+
+def Table:
+    def Table_value(self)
+        tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5) # .place(x=60,y=100)
+        tree.column("# 1", anchor=CENTER)
+        tree.heading("# 1", text="Employee ID")
+        tree.column("# 2", anchor=CENTER)
+        tree.heading("# 2", text="Name")
+        tree.column("# 3", anchor=CENTER)
+        tree.heading("# 3", text="Contact")
+        tree.column("# 4", anchor=CENTER)
+        tree.heading("# 4", text="Department")
+        tree.column("# 5", anchor=CENTER)
+        tree.heading("# 5", text="Email")
+
+    
+        # Insert the data in Treeview widget
+        for i in range(len(data)):
+            tree.insert('', 'end', text="1", values=(data[i][0],data[i][1], data[i][2],data[i][3],data[i][4]))
+            #print(data[i])
+        def select_item(a):
+            #item=tree.place(x=20,y=150)
+            y=tree.item(tree.selection())
+            Edit_form(y['values'][0],y['values'][1],y['values'][2],y['values'][3],y['values'][4])
+        tree.bind('<ButtonRelease-1>',select_item)
+        tree.place(x=20,y=130)
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 from tkinter import *
 from tkinter import ttk
 
@@ -45,3 +146,7 @@ def Application():
     
 
 root.mainloop()
+
+'''
+
+

@@ -1,5 +1,5 @@
 
-from searchingFunc import search_employee_name
+from searchingFunc import search_employee_name,edited
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -16,7 +16,7 @@ Label(text="Update Employee Data Form",bg="grey",font=("calibri",25)).pack()
 
 
 class Edit_form:
-    def __init__(self):
+    def __init__(self,e,n,c,d,em):
         
         Label(text="------Edit From---------",font="20").place(x=60,y=300)
         Label(text="Employee Id:",font="20").place(x=30,y=340)
@@ -25,6 +25,7 @@ class Edit_form:
         Label(text="Dept:",font="20").place(x=30,y=430)
         Label(text="Email:",font="20").place(x=30,y=460)
 
+        
         # entry
         emp=StringVar()
         name=StringVar()
@@ -33,29 +34,41 @@ class Edit_form:
         email=StringVar()
 
         emp_id=Entry(win,font="10",bd=4,textvariable=emp)
+        emp_id.insert(0,e)
         emp_id.place(x=130,y=340)
         name=Entry(win,font="10",bd=4,textvariable=name)
+        name.insert(0,n)
         name.place(x=130,y=370)
         contact=Entry(win,font="10",bd=4,textvariable=contact)
+        contact.insert(0,c)
         contact.place(x=130,y=400)
         dept=Entry(win,font="10",bd=4,textvariable=dept)
+        dept.insert(0,d)
         dept.place(x=130,y=430)
         email=Entry(win,font="10",bd=4,textvariable=email)
+        email.insert(0,em)
         email.place(x=130,y=460)
         #btn=Button(win,text="Updated",font="30",command=update).place(x=150,y=500)
 
         def update():
+            #emp='ram'
 
             emp_in=emp.get()
-            print(emp_in)
             name_in=name.get()
-    
             contact_in=contact.get()
             dept_in=dept.get()
             email_in=email.get()
+            messagebox.showinfo(title="Added",message="Employee data Edit successfuly")
+            edited(emp_in,name_in,contact_in,dept_in,email_in)
+            emp_id.delete(0,END)
+            name.delete(0,END)
+            contact.delete(0,END)
+            dept.delete(0,END)
+            email.delete(0,END)
+            #tree.place(x=20,y=130)
 
          #sumbit button
-        btn=Button(win,text="Updated",font="30",command=update).place(x=150,y=500)
+        btn=Button(win,text="Update",font="30",command=update).place(x=150,y=500)
 
 def search():
     name=name_info.get()
@@ -67,8 +80,6 @@ def search():
     
         
     elif len(data)>0:
-    
-        Edit_form()
         tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5) # .place(x=60,y=100)
         tree.column("# 1", anchor=CENTER)
         tree.heading("# 1", text="Employee ID")
@@ -81,26 +92,18 @@ def search():
         tree.column("# 5", anchor=CENTER)
         tree.heading("# 5", text="Email")
 
-        tree.bind('<ButtonRelease-1>') 
-        treeview =tree
-
-        ttk.Style().configure("Treeview", font= ('', 8), background="#383838", 
-        foreground="white", fieldbackground="yellow")
-
     
         # Insert the data in Treeview widget
         for i in range(len(data)):
             tree.insert('', 'end', text="1", values=(data[i][0],data[i][1], data[i][2],data[i][3],data[i][4]))
             #print(data[i])
-        tree.place(x=20,y=150)
-        y=tree.item(tree.selection())
-        item=tree.selection()
-        print(item)
-
-        
-
-        
-       
+        def select_item(a):
+            #item=tree.place(x=20,y=150)
+            y=tree.item(tree.selection())
+            Edit_form(y['values'][0],y['values'][1],y['values'][2],y['values'][3],y['values'][4])
+        tree.bind('<ButtonRelease-1>',select_item)
+        tree.place(x=20,y=130)
+    
     else:
         Label(win,
               text="Records not found",
@@ -108,17 +111,7 @@ def search():
               fg="#f72036").place(x=40,y=150)
 
 
-
-
-
-
-        
-
-
-
-
-# searching label name
-        
+# searching label name        
 Label(text="Name:",font="20").place(x=30,y=60)
 name_info=StringVar()
 name=Entry(win,font="30",bd=3,textvariable=name_info)
@@ -131,3 +124,4 @@ Label(text="Search Data",font=("Bodoni MT Black",20)).place(x=25,y=100)
 
 
 win.mainloop()
+
