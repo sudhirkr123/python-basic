@@ -1,5 +1,5 @@
 
-from searchingFunc import search_employee_name,edited
+from moduleFunc import search_employee_name,edited
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -71,15 +71,17 @@ class Edit_form:
         btn=Button(win,text="Update",font="30",command=update).place(x=150,y=500)
 
 def search():
+    
     name=name_info.get()
     data=search_employee_name(name)
 
 
     if name=="":
         messagebox.showerror("Error","please enter name")
+        
     
         
-    elif len(data)>0:
+    elif len(data)> 0:  
         tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5) # .place(x=60,y=100)
         tree.column("# 1", anchor=CENTER)
         tree.heading("# 1", text="Employee ID")
@@ -91,7 +93,6 @@ def search():
         tree.heading("# 4", text="Department")
         tree.column("# 5", anchor=CENTER)
         tree.heading("# 5", text="Email")
-
     
         # Insert the data in Treeview widget
         for i in range(len(data)):
@@ -103,14 +104,23 @@ def search():
             Edit_form(y['values'][0],y['values'][1],y['values'][2],y['values'][3],y['values'][4])
         tree.bind('<ButtonRelease-1>',select_item)
         tree.place(x=20,y=130)
+
+        
     
     else:
+        tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),height=5) # .place(x=60,y=100)
+        #tree.column("# 1", anchor=CENTER)
+        tree.heading("# 1", text="Record not found")
+        tree.place(x=20,y=130)
+    
+        '''
         Label(win,
               text="Records not found",
               font="20",
               fg="#f72036").place(x=40,y=150)
-
-
+        '''
+    
+    
 # searching label name        
 Label(text="Name:",font="20").place(x=30,y=60)
 name_info=StringVar()

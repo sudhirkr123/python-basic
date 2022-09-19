@@ -56,4 +56,18 @@ def edited(emp,name,contact,dept,email):
     list1=['emp id','Name','contact','dept','email\n']
     data_list.insert(0,list1)
     write_database(data_list)
+
+
+def delete(empid):
+    data_list=list_split()
+    for i in range(len(data_list)):
+        #print(type(data_list[i][0]))
+        if empid in data_list[i][0]:
+            data_list.pop(i)
+            break
+    list1=['emp id','Name','contact','dept','email\n']
+    data_list.insert(0,list1)
+    write_database(data_list)
+
+
          

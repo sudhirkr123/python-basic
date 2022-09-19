@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import ttk,messagebox
 
 
-
 win=Tk()
 win.title('Add Employee Data')
 win.geometry("400x400")
@@ -61,8 +60,6 @@ Label(text="Name:",font="20").place(x=30,y=110)
 Label(text="Contact:",font="20").place(x=30,y=150)
 Label(text="Dept:",font="20").place(x=30,y=190)
 Label(text="Email:",font="20").place(x=30,y=230)
-
-
 # entry
 emp_info=StringVar()
 name_info=StringVar()
@@ -80,12 +77,9 @@ dept=Entry(win,font="10",bd=4,textvariable=dept_info)
 dept.place(x=130,y=190)
 email=Entry(win,font="10",bd=4,textvariable=email_info)
 email.place(x=130,y=230)
-
 # sumbit button
 btn=Button(win,text="Submit",font="30",command=submit).place(x=150,y=290)
 btn=Button(win,text="Clear",font="30",command=clear).place(x=230,y=290)
-
-#btn.pack()
 
 win.mainloop()
 
