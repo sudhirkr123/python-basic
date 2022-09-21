@@ -69,5 +69,17 @@ def delete(empid):
     data_list.insert(0,list1)
     write_database(data_list)
 
+# check_employee_id
+def check_employee_id(employee_id):
+    data_list= readlines_employeeDetails()
+    employee_list=[]
+    for i in range(0,len(data_list)):
+        employee_list.append(data_list[i].split(','))
+    for i in range(len(employee_list)):
+        if employee_id in employee_list[i][0]:
+            return True
+
+
+
 
          

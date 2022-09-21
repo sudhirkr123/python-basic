@@ -1,4 +1,5 @@
-from csvHandler import append_employeeDetails 
+from csvHandler import append_employeeDetails
+from moduleFunc import check_employee_id
 from tkinter import *
 from tkinter import ttk,messagebox
 def Adding1(win):
@@ -9,8 +10,10 @@ def Adding1(win):
         dept=dept_info.get()
         email=email_info.get()
 
-        # Checking text box 
-        if emp=="":
+        # Checking text box
+        if check_employee_id(emp)==True:
+            messagebox.showerror("Error","emp id is not available")   
+        elif emp=="":
             messagebox.showerror("Error","Please emp id")
         elif name=="":
             messagebox.showerror("Error","please enter name")
@@ -27,14 +30,14 @@ def Adding1(win):
         else:
             messagebox.showinfo(title="Added",message="Employee data added successfuly")
         
-        '''
-        Label(win,
-                text="Employee data added successfuly",
-                font="20",
-                fg="green")
-        place(x=110,y=265)
-        '''
-        append_employeeDetails(emp,name,contact,dept,email)
+            '''
+            Label(win,
+                    text="Employee data added successfuly",
+                    font="20",
+                    fg="green")
+            place(x=110,y=265)
+            '''
+            append_employeeDetails(emp,name,contact,dept,email)
 
     # clean the text box
     def clear():
@@ -49,7 +52,7 @@ def Adding1(win):
 
     win.title('Add Employee Data')
     win.geometry("400x400")
-    #win.resizable(False,False)    
+    win.resizable(False,False)    
     
     # label
     Label(win,text="Add Employee Data",bg="grey",font=("calibri",25)).pack()

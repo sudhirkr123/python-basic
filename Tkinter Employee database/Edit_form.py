@@ -7,7 +7,7 @@ def Edit(win):
     win.title('Searching Employee Data')
     #win.maxsize(width=720,height=400)
     #win.minsize(width=500,height=300)
-    win.geometry("1150x650")
+    win.geometry("1080x580")
     win.resizable(False,False)
     Label(win,text="Update Employee Data Form",bg="grey",font=("calibri",25)).pack()
 
