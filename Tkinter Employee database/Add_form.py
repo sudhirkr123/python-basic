@@ -52,7 +52,9 @@ def Adding1(win):
 
     win.title('Add Employee Data')
     win.geometry("400x400")
-    win.resizable(False,False)    
+    win.iconbitmap("D:\\sudhir\\basic python\\Tkinter Employee database\\icon\\add.ico")
+    win.resizable(False,False)
+    
     
     # label
     Label(win,text="Add Employee Data",bg="grey",font=("calibri",25)).pack()
@@ -83,6 +85,8 @@ def Adding1(win):
     btn=Button(win,text="Clear",font="30",command=clear).place(x=230,y=290)
 
     win.mainloop()
+
+    
 #win=Tk()
 #Adding1(win)
 

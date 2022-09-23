@@ -1,4 +1,170 @@
+import tkinter as tk
 
+root = tk.Tk()
+root.geometry('400x300')
+
+header = tk.Frame(root, bg='green', height=30)
+content = tk.Frame(root, bg='red')
+footer = tk.Frame(root, bg='green', height=30)
+
+header.pack(fill='both') #, side='top')
+content.pack(fill='both')
+footer.pack(fill='both', side='bottom')
+
+root.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+from tkinter import ttk
+from tkinter import *
+win=Tk()
+win.title('Acufore Employee data')
+widget = Button(text='Spam', padx=10, pady=10)
+widget.pack(padx=20, pady=20)
+widget.config(cursor='gumby')
+widget.config(bd=8, relief=RAISED)
+widget.config(bg='dark green', fg='white')
+widget.config(font=('helvetica', 20, 'underline italic'))
+mainloop()
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+import tkinter
+
+master=tkinter.Tk()
+master.title("place() method")
+master.geometry("450x350")
+
+button1=tkinter.Button(master, text="button1")
+button1.place(x=25, y=100)
+
+button2=tkinter.Button(master, text="button2")
+button2.place(x=100, y=25)
+
+button3=tkinter.Button(master, text="button3")
+button3.place(x=175, y=100)
+
+master.mainloop()
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+import tkinter as tk
+from tkinter import messagebox
+
+root = tk.Tk()
+
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
+root.mainloop()
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 import tkinter as tk
 from tkinter import ttk
 win = tk.Tk()
@@ -30,7 +196,7 @@ def Table:
         tree.place(x=20,y=130)
     
         
-
+'''
 
 
 

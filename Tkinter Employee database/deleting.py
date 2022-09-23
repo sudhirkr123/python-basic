@@ -4,7 +4,8 @@ from tkinter import ttk
 from tkinter import messagebox
 def delete_data(win):
     win.title("Delete Data")
-    win.geometry("1050x380")
+    win.geometry("1050x340")
+    win.iconbitmap("D:\\sudhir\\basic python\\Tkinter Employee database\\icon\\delete.ico")
     win.resizable(False,False)
     Label(win,text="Delete Employee Data",bg="yellow",font=("calibri",25)).pack()
 
@@ -63,7 +64,7 @@ def delete_data(win):
                     messagebox.showinfo(title="Delete",message="Employee data delete successfuly")
                     delete(value)
                 
-                btn=Button(win,text="delete",font="30",bd=3,command=delete1).place(x=40,y=270)
+                btn=Button(win,text="Delete",font="30",bd=3,command=delete1).place(x=500,y=270)
 
             tree.bind('<ButtonRelease-1>',select_item)
 

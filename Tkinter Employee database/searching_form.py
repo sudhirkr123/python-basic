@@ -7,7 +7,8 @@ def searching(win):
     win.title('Searching Employee Data')
     #win.maxsize(width=720,height=400)
     #win.minsize(width=500,height=300)
-    win.geometry("1050x300")
+    win.geometry("1080x300")
+    win.iconbitmap("D:\\sudhir\\basic python\\Tkinter Employee database\\icon\\search.ico")
     win.resizable(False,False)
 
     def search():
@@ -56,12 +57,7 @@ def searching(win):
     name=Entry(win,font="30",bd=3,textvariable=name_info)
     name.place(x=80,y=40)
 
-    '''
-    Label(text="emp id:",font="20").place(x=25,y=80)
-    emp_id=StringVar()
-    emp=Entry(win,font="30",bd=3,textvariable=emp_id)
-    emp.place(x=80,y=80)
-    '''
+    
     # sumbit button
     btn=Button(win,text="Search",font="30",bd=3,command=search).place(x=280,y=35)
     #frame1 = ttk.LabelFrame(win, text="frame1", width=100, height=50, bd=5)

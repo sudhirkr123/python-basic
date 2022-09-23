@@ -1,20 +1,21 @@
-from moduleFunc import search_employee_name,edited
+from moduleFunc import search_employee_name,edited, check_employee_id
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 
 def Edit(win):
-    win.title('Searching Employee Data')
+    win.title('Update Employee Data')
     #win.maxsize(width=720,height=400)
     #win.minsize(width=500,height=300)
     win.geometry("1080x580")
+    win.iconbitmap("D:\\sudhir\\basic python\\Tkinter Employee database\\icon\\update.ico")
     win.resizable(False,False)
     Label(win,text="Update Employee Data Form",bg="grey",font=("calibri",25)).pack()
 
 
 
     class Edit_form:
-        def __init__(self,e,n,c,d,em):
+        def __init__(self,emp1,name1,contact1,dept1,email1):
         
             Label(win,text="------Edit From---------",font="20").place(x=60,y=300)
             Label(win,text="Employee Id:",font="20").place(x=30,y=340)
@@ -32,19 +33,19 @@ def Edit(win):
             email=StringVar()
 
             emp_id=Entry(win,font="10",bd=4,textvariable=emp)
-            emp_id.insert(0,e)
+            emp_id.insert(0,emp1)
             emp_id.place(x=130,y=340)
             name=Entry(win,font="10",bd=4,textvariable=name)
-            name.insert(0,n)
+            name.insert(0,name1)
             name.place(x=130,y=370)
             contact=Entry(win,font="10",bd=4,textvariable=contact)
-            contact.insert(0,c)
+            contact.insert(0,contact1)
             contact.place(x=130,y=400)
             dept=Entry(win,font="10",bd=4,textvariable=dept)
-            dept.insert(0,d)
+            dept.insert(0,dept1)
             dept.place(x=130,y=430)
             email=Entry(win,font="10",bd=4,textvariable=email)
-            email.insert(0,em)
+            email.insert(0,email1)
             email.place(x=130,y=460)
             #btn=Button(win,text="Updated",font="30",command=update).place(x=150,y=500)
 
@@ -74,11 +75,11 @@ def Edit(win):
         data=search_employee_name(name)
 
 
+
         if name=="":
             messagebox.showerror("Error","please enter name")
-        
-    
-        
+
+                
         elif len(data)> 0:  
             tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5) # .place(x=60,y=100)
             tree.column("# 1", anchor=CENTER)
