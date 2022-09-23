@@ -10,6 +10,7 @@ def searching(win):
     win.geometry("1080x300")
     win.iconbitmap("D:\\sudhir\\basic python\\Tkinter Employee database\\icon\\search.ico")
     win.resizable(False,False)
+   
 
     def search():
         name=name_info.get()
@@ -19,7 +20,16 @@ def searching(win):
             messagebox.showerror("Error","please enter name")
     
         
-        elif len(data)>=1:  
+        elif len(data)>=1:
+            '''
+            tree = ttk.Treeview(win,column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=8,selectmode='browse')
+            tree.place(x=30, y=95)
+    
+            vsb = ttk.Scrollbar(win, orient="vertical", command=tree.yview)
+            vsb.place(x=20+1000+2, y=95, height=170+20)
+
+            tree.configure(yscrollcommand=vsb.set)
+            '''
             tree = ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"), show='headings', height=5) # .place(x=60,y=100)
             tree.column("# 1", anchor=CENTER)
             tree.heading("# 1", text="Employee ID")
@@ -36,6 +46,8 @@ def searching(win):
             for i in range(len(data)):
                 tree.insert('','end',text="1",values=(data[i][0],data[i][1],data[i][2],data[i][3],data[i][4]))
             tree.place(x=20,y=130)
+
+            
         else:
             messagebox.showerror("Error","Record not found")
             tree = ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"), show='headings', height=5) # .place(x=60,y=100)

@@ -1,6 +1,5 @@
 from csvHandler import readlines_employeeDetails,write_database
 
-
 def list_split():
     data_list=readlines_employeeDetails()
     employee_list=[]
@@ -22,12 +21,12 @@ def list_cleaning():
 def search_employee_name(name):
     Data_list=list_cleaning()
     search_store=[]
-    for i in range(1,len(Data_list)): 
+    for i in range(0,len(Data_list)): 
         if name.lower() in Data_list[i][1].lower():
             search_store.append(Data_list[i])
     return search_store
 
-
+'''
 # search by employee_id    
 def search_by_employee_id(employee_id):
     Data_list=list_cleaning()
@@ -36,6 +35,7 @@ def search_by_employee_id(employee_id):
         if employee_id in Data_list[i][0]:
             search_store.append(Data_list[i])
     return search_store
+'''
 
 def Edit(name,list1):
      Data_list=list_cleaning()
@@ -47,11 +47,11 @@ def Edit(name,list1):
 
 
 
-def edited(emp,name,contact,dept,email):
+def edited(emp1,emp,name,contact,dept,email):
     value=[emp,name,contact,dept,email+'\n']
     data_list=list_split()
     for i in range(1,len(data_list)):
-        if emp in data_list[i][0]:
+        if str(emp1) in data_list[i][0]:
             data_list[i]=value
     list1=['emp id','Name','contact','dept','email\n']
     data_list.insert(0,list1)

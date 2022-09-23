@@ -1,4 +1,4 @@
-from moduleFunc import search_employee_name,edited, check_employee_id
+from moduleFunc import search_employee_name,edited
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -57,15 +57,14 @@ def Edit(win):
                 contact_in=contact.get()
                 dept_in=dept.get()
                 email_in=email.get()
+
                 messagebox.showinfo(title="Added",message="Employee data Edit successfuly")
-                edited(emp_in,name_in,contact_in,dept_in,email_in)
+                edited(emp1,emp_in,name_in,contact_in,dept_in,email_in)
                 emp_id.delete(0,END)
                 name.delete(0,END)
                 contact.delete(0,END)
                 dept.delete(0,END)
                 email.delete(0,END)
-                #tree.place(x=20,y=130)
-
              #sumbit button
             btn=Button(win,text="Update",font="30",command=update).place(x=150,y=500)
 

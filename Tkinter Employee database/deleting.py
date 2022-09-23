@@ -9,14 +9,14 @@ def delete_data(win):
     win.resizable(False,False)
     Label(win,text="Delete Employee Data",bg="yellow",font=("calibri",25)).pack()
 
-    #tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5)
+    # tree =ttk.Treeview(win, column=("Employee ID", "Name", "Contact","Department","Email"),show='headings',height=5)
 
     def search():
         name=name_info.get()
         data=search_employee_name(name)
     
         if name=="":
-            #win.destroy()
+            # win.destroy()
             messagebox.showerror("Error","please enter name")
         
         elif len(data)<=0:
@@ -56,7 +56,6 @@ def delete_data(win):
                 #print(data[i])
             tree.place(x=20,y=130) 
             def select_item(a):
-                #item=tree.place(x=20,y=150)
                 y=tree.item(tree.selection())
                 emp=(y['values'][0])
                 value=str(emp)
